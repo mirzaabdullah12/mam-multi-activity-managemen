@@ -31,36 +31,20 @@ picture {
   image-rendering: -webkit-optimize-contrast;
   content-visibility: auto;
   will-change: auto;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
-/* Force Hardware Acceleration for backgrounds */
-[style*="background-image"] {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
-}
-
-/* Smooth Animations - GPU Accelerated */
+/* Smooth Animations - Optimized */
 .transition-all,
 .transition-opacity,
 .transition-transform,
-.transition-colors,
-.group {
+.transition-colors {
   will-change: auto;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 /* Instant Section Rendering */
 section {
-  contain: layout style;
+  contain: layout style paint;
   content-visibility: auto;
-  transform: translate3d(0, 0, 0);
 }
 
 /* Optimize Scrolling Performance */
@@ -88,9 +72,12 @@ section {
 
 /* Optimize Hover - No Lag */
 @media (hover: hover) {
-  .hover\:scale-105:hover,
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  
   .group:hover .group-hover\:scale-110 {
-    transform: scale(1.05) translate3d(0, 0, 0);
+    transform: scale(1.1);
   }
 }
 
@@ -105,3 +92,11 @@ section {
     scroll-behavior: auto !important;
   }
 }
+
+/* Performance boost for background images */
+[style*="background-image"] {
+  background-attachment: scroll;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+

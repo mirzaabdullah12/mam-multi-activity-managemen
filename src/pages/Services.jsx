@@ -1,11 +1,19 @@
-import { Building2, Wrench, Zap, Droplets, Truck, Flame } from 'lucide-react';
-import { useMemo } from 'react';
+import { Building2, Wrench, Zap, Droplets, Truck, Flame, Home } from 'lucide-react';
+import { useMemo, memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Services = () => {
+const Services = memo(() => {
   const navigate = useNavigate();
   
   const services = useMemo(() => [
+    {
+      icon: <Zap size={40} />,
+      title: 'Wedding Light',
+      description: 'Professional wedding and event lighting services to make your special day magical and memorable with stunning light decorations.',
+      color: 'from-pink-500 to-purple-500',
+      bgImage: '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
+      slug: 'wedding-light'
+    },
     {
       icon: <Building2 size={40} />,
       title: 'Building & Construction',
@@ -47,14 +55,34 @@ const Services = () => {
       slug: 'house-moving'
     },
     {
+      icon: <Home size={40} />,
+      title: 'House & Marquee Decorating',
+      description: 'Transform your events with our professional house and marquee decoration services. We create beautiful setups for weddings, parties, and special occasions.',
+      color: 'from-rose-500 to-pink-500',
+      bgImage: '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
+      slug: 'house-marquee-decorating'
+    },
+    {
       icon: <Flame size={40} />,
-      title: 'Garden & Heating Service',
-      description: 'Professional garden maintenance and heating system installation and repair services. We keep your outdoor spaces beautiful and your home warm and comfortable.',
-      color: 'from-red-500 to-orange-500',
+      title: 'Heating Service',
+      description: 'Professional heating system installation, repair, and maintenance services. Keep your home warm and comfortable all year round with our expert heating solutions.',
+      color: 'from-orange-500 to-red-500',
+      bgImage: '/src/assets/technician-checking-heating-system-boiler-room.jpg',
+      slug: 'heating-service'
+    },
+    {
+      icon: <Flame size={40} />,
+      title: 'Gardening Services',
+      description: 'Professional garden maintenance, lawn care, landscaping, and outdoor beautification services to keep your garden looking perfect all year round.',
+      color: 'from-green-500 to-emerald-500',
       bgImage: '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
-      slug: 'garden-heating'
+      slug: 'gardening-services'
     }
   ], []);
+
+  const handleServiceClick = useCallback((slug) => {
+    navigate(`/service/${slug}`);
+  }, [navigate]);
 
   return (
     <section id="services" className="py-20 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50">
@@ -74,8 +102,8 @@ const Services = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
-              key={index}
-              onClick={() => navigate(`/service/${service.slug}`)}
+              key={service.slug}
+              onClick={() => handleServiceClick(service.slug)}
               className="group rounded-2xl overflow-hidden relative min-h-[320px] hover:shadow-2xl transition-all duration-500 cursor-pointer"
               style={{
                 backgroundImage: `url('${service.bgImage}')`,
@@ -106,6 +134,8 @@ const Services = () => {
       </div>
     </section>
   );
-};
+});
+
+Services.displayName = 'Services';
 
 export default Services;

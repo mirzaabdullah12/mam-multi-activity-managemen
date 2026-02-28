@@ -1,6 +1,7 @@
 import { Phone, Home, Award } from 'lucide-react';
+import { memo } from 'react';
 
-const Problem = () => {
+const Problem = memo(() => {
   return (
     <section id="problem" className="py-20 px-4 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
       {/* Background Pattern */}
@@ -30,7 +31,7 @@ const Problem = () => {
           {/* Main Heading */}
           <div className="mb-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
-              Have Any Housing Problems?
+              Need Any Housing Services?
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
           </div>
@@ -83,6 +84,8 @@ const Problem = () => {
       </div>
     </section>
   );
-};
+});
+
+Problem.displayName = 'Problem';
 
 export default Problem;

@@ -1,7 +1,8 @@
-import { Check, Award, Users, DollarSign, Star, Shield } from 'lucide-react';
+import { Check, Award, Users, PoundSterling, Star, Shield } from 'lucide-react';
+import { memo, useMemo } from 'react';
 
-const Choose = () => {
-  const reasons = [
+const Choose = memo(() => {
+  const reasons = useMemo(() => [
     {
       icon: <Users size={32} />,
       title: 'Professional Team',
@@ -15,7 +16,7 @@ const Choose = () => {
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <DollarSign size={32} />,
+      icon: <PoundSterling size={32} />,
       title: 'Affordable Pricing',
       description: 'Competitive rates without compromising quality.',
       color: 'from-green-500 to-emerald-500'
@@ -32,7 +33,7 @@ const Choose = () => {
       description: 'Your happiness is our top priority.',
       color: 'from-indigo-500 to-purple-500'
     }
-  ];
+  ], []);
 
   return (
     <section id="choose" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -50,9 +51,9 @@ const Choose = () => {
 
         {/* Reasons Grid - Compact Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
-          {reasons.map((reason, index) => (
+          {reasons.map((reason) => (
             <div
-              key={index}
+              key={reason.title}
               className="group bg-white rounded-xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-transparent hover:-translate-y-1"
             >
               <div className={`w-14 h-14 bg-gradient-to-br ${reason.color} rounded-lg flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}>
@@ -70,6 +71,8 @@ const Choose = () => {
       </div>
     </section>
   );
-};
+});
+
+Choose.displayName = 'Choose';
 
 export default Choose;

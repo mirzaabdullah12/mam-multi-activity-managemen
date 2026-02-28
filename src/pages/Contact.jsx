@@ -1,6 +1,7 @@
 import { Mail, MapPin, Send, Phone, Clock, CheckCircle } from 'lucide-react';
+import { memo } from 'react';
 
-const Contact = () => {
+const Contact = memo(() => {
   return (
     <section id="contact" className="py-20 px-4 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50">
       <div className="max-w-7xl mx-auto">
@@ -155,6 +156,8 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+});
+
+Contact.displayName = 'Contact';
 
 export default Contact;

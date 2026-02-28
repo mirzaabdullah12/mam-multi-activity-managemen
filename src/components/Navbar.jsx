@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
     <nav className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 shadow-lg fixed top-0 w-full z-50">
@@ -11,8 +19,17 @@ const Navbar = () => {
           
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#" className="text-white text-2xl font-bold hover:scale-105 transition-transform">
-              MAM
+            <a href="#" className="flex items-center gap-3 hover:scale-105 transition-transform">
+              <img 
+                src="/src/assets/logo.png" 
+                alt="MAM Logo" 
+                className="h-14 w-auto object-contain"
+              />
+              <div className="flex items-center gap-1">
+                <span className="text-3xl font-black text-gray-900">M</span>
+                <span className="text-3xl font-black text-white">A</span>
+                <span className="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">M</span>
+              </div>
             </a>
           </div>
 
@@ -42,8 +59,9 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               className="text-white hover:bg-white/20 p-2 rounded-lg transition-all"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -58,28 +76,28 @@ const Navbar = () => {
             <a
               href="#home"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
             >
               Home
             </a>
             <a
               href="#about"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
             >
               About
             </a>
             <a
               href="#services"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
             >
               Services
             </a>
             <a
               href="#contact"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
             >
               Contact
             </a>
@@ -91,6 +109,8 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;

@@ -1,4 +1,7 @@
 // Centralized image preloader for instant rendering
+// Cache to prevent duplicate loading
+const imageCache = new Set();
+
 export const preloadAllImages = () => {
   const images = [
     // Home slider images - PRIORITY
@@ -6,17 +9,27 @@ export const preloadAllImages = () => {
     '/src/assets/male-electrician-working-electrical-panel-male-electrician-overalls.jpg',
     '/src/assets/man-builder-uniform-holding-older-looking-building-plan.jpg',
     
-    // Service card images
+    // Service card images - ALL 9 CARDS
+    '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
     '/src/assets/working-with-blueprint.jpg',
     '/src/assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg',
     '/src/assets/man-electrical-technician-working-switchboard-with-fuses.jpg',
     '/src/assets/worker-repairing-water-heater.jpg',
     '/src/assets/medium-shot-delivery-people-working.jpg',
+    '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
+    '/src/assets/technician-checking-heating-system-boiler-room.jpg',
     '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg'
   ];
 
+  // Filter out already cached images
+  const imagesToLoad = images.filter(src => !imageCache.has(src));
+  
+  if (imagesToLoad.length === 0) {
+    return Promise.resolve([]);
+  }
+
   // Method 1: Preload using link tags (fastest - browser priority)
-  images.forEach((src, index) => {
+  imagesToLoad.forEach((src, index) => {
     const link = document.createElement('link');
     link.rel = 'preload';
     link.as = 'image';
@@ -26,30 +39,35 @@ export const preloadAllImages = () => {
       link.fetchPriority = 'high';
     }
     document.head.appendChild(link);
+    imageCache.add(src);
   });
 
   // Method 2: Aggressive Image object preloading for cache
-  const imagePromises = images.map((src, index) => {
+  const imagePromises = imagesToLoad.map((src, index) => {
     return new Promise((resolve) => {
       const img = new Image();
       
-      // Decode image immediately for instant rendering
-      img.decode().then(() => {
-        resolve(img);
-      }).catch(() => {
-        // Fallback if decode not supported
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null);
-      });
-      
-      img.src = src;
-      
-      // Force immediate loading
+      // Set loading priority
       if (index < 3) {
         img.loading = 'eager';
       }
+      
+      // Decode image immediately for instant rendering
+      img.onload = () => {
+        if (img.decode) {
+          img.decode()
+            .then(() => resolve(img))
+            .catch(() => resolve(img));
+        } else {
+          resolve(img);
+        }
+      };
+      
+      img.onerror = () => resolve(null);
+      img.src = src;
     });
   });
 
   return Promise.all(imagePromises);
 };
+

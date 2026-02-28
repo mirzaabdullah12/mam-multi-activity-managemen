@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Phone, Mail } from 'lucide-react';
 import { useEffect } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -11,6 +13,99 @@ const ServiceDetail = () => {
   }, [serviceId]);
 
   const servicesData = {
+    'wedding-light': {
+      title: 'Wedding Light',
+      image: '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
+      description: 'Professional wedding and event lighting services',
+      longDescription: 'Make your special day magical with our professional wedding lighting services. We specialize in creating stunning light displays that transform venues into enchanting spaces for weddings and special events.',
+      features: [
+        'Wedding Stage Lighting',
+        'Fairy Light Decorations',
+        'LED Light Installations',
+        'Outdoor Event Lighting',
+        'Dance Floor Lighting',
+        'Ambient Mood Lighting',
+        'Custom Light Designs',
+        'Professional Setup & Removal'
+      ],
+      benefits: [
+        'Experienced lighting designers',
+        'High-quality equipment',
+        'Customized lighting plans',
+        'Affordable packages',
+        'On-time setup and removal',
+        'Professional service'
+      ],
+      process: [
+        { step: 1, title: 'Consultation', desc: 'Discuss your vision and requirements' },
+        { step: 2, title: 'Design Plan', desc: 'Create custom lighting design' },
+        { step: 3, title: 'Equipment Setup', desc: 'Professional installation before event' },
+        { step: 4, title: 'Event Support', desc: 'On-site support during event' },
+        { step: 5, title: 'Removal', desc: 'Clean removal after event' }
+      ]
+    },
+    'house-marquee-decorating': {
+      title: 'House & Marquee Decorating',
+      image: '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
+      description: 'Professional decoration services for houses and marquees',
+      longDescription: 'Transform your events with our expert house and marquee decoration services. We create beautiful, memorable setups for weddings, parties, and all special occasions with attention to every detail.',
+      features: [
+        'Wedding Decorations',
+        'Marquee Setup & Styling',
+        'Floral Arrangements',
+        'Balloon Decorations',
+        'Stage Decorations',
+        'Entrance Decorations',
+        'Table Settings',
+        'Theme-based Decorations'
+      ],
+      benefits: [
+        'Creative design team',
+        'Quality decoration materials',
+        'Custom themes available',
+        'Complete setup service',
+        'Affordable pricing',
+        'Timely execution'
+      ],
+      process: [
+        { step: 1, title: 'Theme Selection', desc: 'Choose your decoration theme' },
+        { step: 2, title: 'Planning', desc: 'Detailed decoration plan created' },
+        { step: 3, title: 'Material Preparation', desc: 'Quality materials arranged' },
+        { step: 4, title: 'Setup', desc: 'Professional decoration installation' },
+        { step: 5, title: 'Final Touch', desc: 'Perfect finishing and cleanup' }
+      ]
+    },
+    'heating-service': {
+      title: 'Heating Service',
+      image: '/src/assets/technician-checking-heating-system-boiler-room.jpg',
+      description: 'Professional heating system installation and repair',
+      longDescription: 'Keep your home warm and comfortable with our professional heating services. We provide expert installation, repair, and maintenance of all types of heating systems.',
+      features: [
+        'Boiler Installation',
+        'Central Heating Systems',
+        'Radiator Installation',
+        'Heating Repairs',
+        'System Maintenance',
+        'Emergency Heating Service',
+        'Energy Efficient Solutions',
+        'Heating System Upgrades'
+      ],
+      benefits: [
+        'Certified heating engineers',
+        'Quality heating equipment',
+        'Energy-efficient solutions',
+        'Competitive pricing',
+        '24/7 emergency service',
+        'Guaranteed workmanship'
+      ],
+      process: [
+        { step: 1, title: 'Assessment', desc: 'Evaluate your heating needs' },
+        { step: 2, title: 'Recommendation', desc: 'Suggest best heating solution' },
+        { step: 3, title: 'Installation', desc: 'Professional system installation' },
+        { step: 4, title: 'Testing', desc: 'Complete system testing' },
+        { step: 5, title: 'Maintenance', desc: 'Ongoing support and service' }
+      ]
+    },
     'building-construction': {
       title: 'Building & Construction',
       image: '/src/assets/working-with-blueprint.jpg',
@@ -166,35 +261,35 @@ const ServiceDetail = () => {
         { step: 5, title: 'Unpacking', desc: 'Help with unpacking and setup' }
       ]
     },
-    'garden-heating': {
-      title: 'Garden & Heating Service',
+    'gardening-services': {
+      title: 'Gardening Services',
       image: '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
-      description: 'Professional garden maintenance and heating system services',
-      longDescription: 'We offer comprehensive garden maintenance and heating system services to keep your outdoor spaces beautiful and your home comfortable year-round.',
+      description: 'Professional garden maintenance and landscaping services',
+      longDescription: 'Transform and maintain your outdoor spaces with our professional gardening services. We provide comprehensive garden care, landscaping, and maintenance to keep your garden beautiful throughout the year.',
       features: [
         'Garden Maintenance',
-        'Lawn Care & Mowing',
+        'Lawn Mowing & Care',
         'Hedge Trimming',
         'Leaf Removal',
-        'Heating System Installation',
-        'Boiler Repairs',
-        'Radiator Installation',
-        'Heating System Maintenance'
+        'Garden Design & Landscaping',
+        'Plant Care & Pruning',
+        'Seasonal Garden Cleanup',
+        'Garden Irrigation'
       ],
       benefits: [
-        'Experienced gardeners and heating engineers',
+        'Experienced gardeners',
         'Regular maintenance programs',
+        'Quality equipment',
         'Competitive pricing',
-        'Quality service guaranteed',
-        'Emergency heating repairs',
-        'Seasonal garden care'
+        'Seasonal care packages',
+        'Professional landscaping'
       ],
       process: [
-        { step: 1, title: 'Consultation', desc: 'Discuss your garden or heating needs' },
-        { step: 2, title: 'Assessment', desc: 'Evaluate the work required' },
-        { step: 3, title: 'Service Plan', desc: 'Create a customized service plan' },
-        { step: 4, title: 'Service Delivery', desc: 'Professional work completed' },
-        { step: 5, title: 'Ongoing Support', desc: 'Regular maintenance and support' }
+        { step: 1, title: 'Garden Assessment', desc: 'Evaluate your garden needs' },
+        { step: 2, title: 'Service Plan', desc: 'Create customized maintenance plan' },
+        { step: 3, title: 'Regular Care', desc: 'Scheduled garden maintenance' },
+        { step: 4, title: 'Seasonal Work', desc: 'Seasonal cleanup and care' },
+        { step: 5, title: 'Ongoing Support', desc: 'Continuous garden support' }
       ]
     }
   };
@@ -216,6 +311,7 @@ const ServiceDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
       {/* Hero Section with Image */}
       <div 
         className="relative h-[60vh] bg-cover bg-center"
@@ -252,6 +348,22 @@ const ServiceDetail = () => {
           </p>
         </div>
 
+        {/* Process */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Process</h3>
+          <div className="grid md:grid-cols-5 gap-6">
+            {service.process.map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-cyan-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+                  {item.step}
+                </div>
+                <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Features & Benefits Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Features */}
@@ -281,22 +393,6 @@ const ServiceDetail = () => {
           </div>
         </div>
 
-        {/* Process */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Process</h3>
-          <div className="grid md:grid-cols-5 gap-6">
-            {service.process.map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-cyan-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
-                  {item.step}
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-sm text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 rounded-2xl p-12 text-center text-white shadow-2xl">
           <h3 className="text-3xl font-bold mb-4">Ready to Get Started?</h3>
@@ -319,6 +415,8 @@ const ServiceDetail = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
