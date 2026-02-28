@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ULTRA Performance Optimizations - Zero Delay */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  overflow-x: hidden;
+  font-display: swap;
+  min-height: 100vh;
+}
+
+/* INSTANT Image Rendering - Zero Lag */
+img,
+[style*="background-image"],
+picture {
+  image-rendering: -webkit-optimize-contrast;
+  content-visibility: auto;
+  will-change: auto;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Force Hardware Acceleration for backgrounds */
+[style*="background-image"] {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Smooth Animations - GPU Accelerated */
+.transition-all,
+.transition-opacity,
+.transition-transform,
+.transition-colors,
+.group {
+  will-change: auto;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Instant Section Rendering */
+section {
+  contain: layout style;
+  content-visibility: auto;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optimize Scrolling Performance */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Lightweight Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Optimize Hover - No Lag */
+@media (hover: hover) {
+  .hover\:scale-105:hover,
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.05) translate3d(0, 0, 0);
+  }
+}
+
+/* Reduce Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
