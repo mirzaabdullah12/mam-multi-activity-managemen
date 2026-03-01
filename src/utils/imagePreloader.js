@@ -18,7 +18,11 @@ export const preloadAllImages = () => {
     '/src/assets/medium-shot-delivery-people-working.jpg',
     '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
     '/src/assets/technician-checking-heating-system-boiler-room.jpg',
-    '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg'
+    '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
+    
+    // Electrical service detail images
+    '/src/assets/elec 1.jpg',
+    '/src/assets/elec 2.jpg'
   ];
 
   // Filter out already cached images

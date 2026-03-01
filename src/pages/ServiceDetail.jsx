@@ -1,16 +1,31 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, Phone, Mail } from 'lucide-react';
-import { useEffect } from 'react';
+import { ArrowLeft, CheckCircle, Phone, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [serviceId]);
+
+  // Image slider for electrical services
+  const electricalImages = [
+    '/src/assets/elec 1.jpg',
+    '/src/assets/elec 2.jpg'
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % electricalImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + electricalImages.length) % electricalImages.length);
+  };
 
   const servicesData = {
     'wedding-light': {
@@ -363,6 +378,65 @@ const ServiceDetail = () => {
             ))}
           </div>
         </div>
+
+        {/* Image Slider - Only for Electrical Services */}
+        {serviceId === 'electrical-services' && (
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Work Gallery</h3>
+            <div className="relative max-w-4xl mx-auto">
+              {/* Main Image */}
+              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+                <img 
+                  src={electricalImages[currentImageIndex]} 
+                  alt={`Electrical work ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Navigation Buttons */}
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={24} className="text-gray-800" />
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={24} className="text-gray-800" />
+                </button>
+
+                {/* Image Counter */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  {currentImageIndex + 1} / {electricalImages.length}
+                </div>
+              </div>
+
+              {/* Thumbnail Navigation */}
+              <div className="flex gap-4 justify-center mt-6">
+                {electricalImages.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-20 h-20 rounded-lg overflow-hidden border-4 transition-all ${
+                      currentImageIndex === index 
+                        ? 'border-indigo-600 scale-110' 
+                        : 'border-gray-300 hover:border-indigo-400'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Features & Benefits Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
