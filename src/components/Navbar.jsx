@@ -1,5 +1,9 @@
 import { useState, memo, useCallback } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+// logo asset
+import logo from '../assets/logo.png';
 
 const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +25,7 @@ const Navbar = memo(() => {
           <div className="flex items-center">
             <a href="#" className="flex items-center gap-3 hover:scale-105 transition-transform">
               <img 
-                src="/src/assets/logo.png" 
+                src={logo} 
                 alt="MAM Logo" 
                 className="h-14 w-auto object-contain"
               />
@@ -41,15 +45,15 @@ const Navbar = memo(() => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
+            <Link to="/" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
               Home
-            </a>
-            <a href="/about" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
+            </Link>
+            <Link to="/about" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
               About
-            </a>
-            <a href="/services" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
+            </Link>
+            <Link to="/services" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
               Services
-            </a>
+            </Link>
             <a href="/#contact" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
               Contact
             </a>
@@ -81,27 +85,27 @@ const Navbar = memo(() => {
       {isOpen && (
         <div className="md:hidden bg-white/10 backdrop-blur-lg border-t border-white/20">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
               onClick={closeMenu}
             >
               Home
-            </a>
-            <a
-              href="/about"
+            </Link>
+            <Link
+              to="/about"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
               onClick={closeMenu}
             >
               About
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/services"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
               onClick={closeMenu}
             >
               Services
-            </a>
+            </Link>
             <a
               href="/#contact"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"

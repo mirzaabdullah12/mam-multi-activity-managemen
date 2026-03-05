@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Building2, Wrench, Zap, Droplets, Truck, Flame, Home, Phone, Mail, Shield, Award, Clock, CheckCircle, Sparkles } from 'lucide-react';
 import { useMemo, memo, useCallback } from 'react';
 import Navbar from '../components/Navbar';
@@ -14,7 +14,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Transform your special moments with stunning lighting designs and elegant decorations',
       description: 'Create magical memories with our professional wedding lighting services. We specialize in elegant light installations, ambient decorations, and complete event illumination to make your celebration truly unforgettable.',
       color: 'from-pink-500 to-purple-500',
-      bgImage: '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
+      bgImage: new URL('../assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg', import.meta.url).href,
       slug: 'wedding-light'
     },
     {
@@ -23,7 +23,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Expert construction solutions from new builds to complete property renovations',
       description: 'Comprehensive building services delivered by experienced professionals. From ground-up construction to property extensions and complete renovations, we bring your vision to life with quality craftsmanship.',
       color: 'from-blue-500 to-cyan-500',
-      bgImage: '/src/assets/working-with-blueprint.jpg',
+      bgImage: new URL('../assets/working-with-blueprint.jpg', import.meta.url).href,
       slug: 'building-construction'
     },
     {
@@ -32,7 +32,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Comprehensive property maintenance ensuring safety and lasting quality',
       description: 'Keep your property in perfect condition with our reliable maintenance services. Our skilled team handles all repairs, preventive maintenance, and emergency fixes to protect your investment.',
       color: 'from-purple-500 to-pink-500',
-      bgImage: '/src/assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg',
+      bgImage: new URL('../assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg', import.meta.url).href,
       slug: 'repair-maintenance'
     },
     {
@@ -41,7 +41,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Certified electricians providing safe installations and reliable electrical solutions',
       description: 'Professional electrical services for all your needs. From complete wiring installations to lighting systems, fault diagnostics, and emergency repairs - all work certified and guaranteed.',
       color: 'from-yellow-500 to-orange-500',
-      bgImage: '/src/assets/man-electrical-technician-working-switchboard-with-fuses.jpg',
+      bgImage: new URL('../assets/man-electrical-technician-working-switchboard-with-fuses.jpg', import.meta.url).href,
       slug: 'electrical-services'
     },
     {
@@ -50,7 +50,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Professional plumbers delivering quality installations and emergency repairs',
       description: 'Complete plumbing solutions for residential and commercial properties. Expert pipe installations, leak repairs, bathroom fittings, drainage systems, and 24/7 emergency plumbing services.',
       color: 'from-cyan-500 to-blue-500',
-      bgImage: '/src/assets/worker-repairing-water-heater.jpg',
+      bgImage: new URL('../assets/worker-repairing-water-heater.jpg', import.meta.url).href,
       slug: 'plumbing-services'
     },
     {
@@ -59,7 +59,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Stress-free relocation with professional packing and secure transportation',
       description: 'Make your move effortless with our experienced moving team. We provide careful packing, secure loading, safe transportation, and efficient unpacking services for a smooth relocation experience.',
       color: 'from-green-500 to-emerald-500',
-      bgImage: '/src/assets/medium-shot-delivery-people-working.jpg',
+      bgImage: new URL('../assets/medium-shot-delivery-people-working.jpg', import.meta.url).href,
       slug: 'house-moving'
     },
     {
@@ -68,7 +68,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Creative decoration services bringing elegance to your celebrations',
       description: 'Transform any space into a stunning venue with our decoration expertise. Specializing in weddings, parties, and corporate events with beautiful marquee setups and house decorations.',
       color: 'from-rose-500 to-pink-500',
-      bgImage: '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
+      bgImage: new URL('../assets/beautiful-wedding-altar-made-white-pink-curtains.jpg', import.meta.url).href,
       slug: 'house-marquee-decorating'
     },
     {
@@ -77,7 +77,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Thorough cleaning solutions for spotless homes and professional workspaces',
       description: 'Experience pristine cleanliness with our professional cleaning team. Offering deep cleaning, regular maintenance, office cleaning, and specialized sanitization services using eco-friendly products.',
       color: 'from-teal-500 to-cyan-500',
-      bgImage: '/src/assets/medium-shot-people-cleaning-building (1).jpg',
+      bgImage: new URL('../assets/medium-shot-people-cleaning-building (1).jpg', import.meta.url).href,
       slug: 'cleaning-services'
     },
     {
@@ -86,7 +86,7 @@ const ServicesPage = memo(() => {
       shortDesc: 'Expert landscaping and garden care for beautiful outdoor spaces year-round',
       description: 'Create and maintain stunning outdoor spaces with our gardening professionals. From landscape design to regular lawn care, seasonal planting, and complete garden transformations.',
       color: 'from-green-500 to-emerald-500',
-      bgImage: '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
+      bgImage: new URL('../assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg', import.meta.url).href,
       slug: 'gardening-services'
     }
   ], []);
@@ -130,7 +130,7 @@ const ServicesPage = memo(() => {
             <div className="grid md:grid-cols-2 gap-0">
               <div className="relative h-[450px] md:h-[500px]">
                 <img 
-                  src="/src/assets/portrait-smiling-construction-worker (1).jpg" 
+                  src={new URL('../assets/portrait-smiling-construction-worker (1).jpg', import.meta.url).href} 
                   alt="Professional Services"
                   className="w-full h-full object-cover object-top"
                 />
@@ -345,13 +345,13 @@ const ServicesPage = memo(() => {
                 <Phone size={24} />
                 Call Us Now
               </a>
-              <a 
-                href="/get-quote"
+              <Link 
+                to="/get-quote"
                 className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md text-white border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all"
               >
                 <Mail size={24} />
                 Get a Quote
-              </a>
+              </Link>
             </div>
           </div>
         </div>

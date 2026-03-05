@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = memo(() => {
   return (
@@ -45,49 +46,49 @@ const Footer = memo(() => {
             <h3 className="text-xl font-bold mb-6 text-white">OUR SERVICES</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Wedding Light
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Building & Construction
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Repair & Maintenance
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Electrical Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Plumbing Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> House Moving Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> House & Marquee Decorating
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Cleaning Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                   <span className="text-cyan-400">›</span> Gardening Services
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

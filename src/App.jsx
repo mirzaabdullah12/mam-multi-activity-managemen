@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar'
 import { useState, useEffect, useMemo, lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { preloadAllImages } from './utils/imagePreloader'
 
 // Lazy load components for better performance
@@ -20,7 +20,7 @@ function App() {
   
   const slides = useMemo(() => [
     {
-      image: '/src/assets/household-repair-middle-aged-man-inspecting-pipe-touching-hand-sink-stylish-modern-kitchen.jpg',
+      image: new URL('./assets/household-repair-middle-aged-man-inspecting-pipe-touching-hand-sink-stylish-modern-kitchen.jpg', import.meta.url).href,
       title: 'Welcome to',
       highlight: 'MAM',
       subtitle: 'Multi Activity Management',
@@ -28,7 +28,7 @@ function App() {
       subtext: 'We focus on delivering high-quality work, dependable service, and complete customer satisfaction. Whether you need construction, maintenance, or relocation services, we are here to help.'
     },
     {
-      image: '/src/assets/male-electrician-working-electrical-panel-male-electrician-overalls.jpg',
+      image: new URL('./assets/male-electrician-working-electrical-panel-male-electrician-overalls.jpg', import.meta.url).href,
       title: 'Expert',
       highlight: 'Electrical Services',
       subtitle: 'Professional Electricians',
@@ -36,7 +36,7 @@ function App() {
       subtext: 'Available 24/7 for emergency electrical services. Licensed, insured, and experienced professionals at your service.'
     },
     {
-      image: '/src/assets/man-builder-uniform-holding-older-looking-building-plan.jpg',
+      image: new URL('./assets/man-builder-uniform-holding-older-looking-building-plan.jpg', import.meta.url).href,
       title: 'Quality',
       highlight: 'Construction',
       subtitle: 'Building Your Dreams',
@@ -256,49 +256,49 @@ function App() {
               <h3 className="text-xl font-bold mb-6 text-white">OUR SERVICES</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Wedding Light
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Building & Construction
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Repair & Maintenance
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Electrical Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Plumbing Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> House Moving Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> House & Marquee Decorating
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Cleaning Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  <Link to="/services" className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span className="text-cyan-400">›</span> Gardening Services
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

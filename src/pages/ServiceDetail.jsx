@@ -13,97 +13,97 @@ const ServiceDetail = () => {
     window.scrollTo(0, 0);
   }, [serviceId]);
 
-  // Image slider for electrical services
+  // Image slider for electrical services (use bundler-friendly URLs)
   const electricalImages = [
     {
-      url: '/src/assets/elec 1.jpg',
+      url: new URL('../assets/elec 1.jpg', import.meta.url).href,
       title: 'Professional Electrical Installation',
       description: 'Expert wiring and electrical panel setup with safety compliance'
     },
     {
-      url: '/src/assets/elec 2.jpg',
+      url: new URL('../assets/elec 2.jpg', import.meta.url).href,
       title: 'Electrical Maintenance & Repair',
       description: 'Regular maintenance and emergency repair services available 24/7'
     }
   ];
 
-  // Image slider for gardening services
+  // Image slider for gardening services (use bundler-friendly URLs)
   const gardeningImages = [
     {
-      url: '/src/assets/garden 1.jpg',
+      url: new URL('../assets/garden 1.jpg', import.meta.url).href,
       title: 'Professional Lawn Care',
       description: 'Expert lawn mowing, trimming and maintenance services'
     },
     {
-      url: '/src/assets/garden 2.jpg',
+      url: new URL('../assets/garden 2.jpg', import.meta.url).href,
       title: 'Garden Landscaping',
       description: 'Beautiful garden design and landscaping solutions'
     },
     {
-      url: '/src/assets/garden 3.jpg',
+      url: new URL('../assets/garden 3.jpg', import.meta.url).href,
       title: 'Garden Maintenance',
       description: 'Regular garden upkeep and seasonal cleanup services'
     }
   ];
 
-  // Image slider for house moving services
+  // Image slider for house moving services (use bundler-friendly URLs)
   const houseMovingImages = [
     {
-      url: '/src/assets/house 1.jpg',
+      url: new URL('../assets/house 1.jpg', import.meta.url).href,
       title: 'Professional House Moving',
       description: 'Safe and reliable residential moving services with care',
       position: 'center'
     },
     {
-      url: '/src/assets/house 2.jpg',
+      url: new URL('../assets/house 2.jpg', import.meta.url).href,
       title: 'Packing & Transportation',
       description: 'Expert packing and secure transportation of your belongings',
       position: 'center top'
     }
   ];
 
-  // Image slider for plumbing services
+  // Image slider for plumbing services (use bundler-friendly URLs)
   const plumbingImages = [
     {
-      url: '/src/assets/plumber 1.jpg',
+      url: new URL('../assets/plumber 1.jpg', import.meta.url).href,
       title: 'Professional Plumbing Services',
       description: 'Expert pipe installation, repairs and maintenance',
       position: 'center'
     },
     {
-      url: '/src/assets/plumber 2.jpg',
+      url: new URL('../assets/plumber 2.jpg', import.meta.url).href,
       title: 'Emergency Plumbing Solutions',
       description: 'Fast and reliable plumbing repairs available 24/7',
       position: 'center'
     }
   ];
 
-  // Image slider for wedding light services
+  // Image slider for wedding light services (use bundler-friendly URLs)
   const weddingImages = [
     {
-      url: '/src/assets/weeding 2.jpg',
+      url: new URL('../assets/weeding 2.jpg', import.meta.url).href,
       title: 'Stunning Wedding Lighting',
       description: 'Beautiful light decorations for your special day',
       position: 'center'
     },
     {
-      url: '/src/assets/wedding 1.jpg',
+      url: new URL('../assets/wedding 1.jpg', import.meta.url).href,
       title: 'Elegant Event Lighting',
       description: 'Professional lighting setup for weddings and events',
       position: 'center'
     }
   ];
 
-  // Image slider for house & marquee decorating services
+  // Image slider for house & marquee decorating services (use bundler-friendly URLs)
   const marqueeImages = [
     {
-      url: '/src/assets/maurqi1.jpg',
+      url: new URL('../assets/maurqi1.jpg', import.meta.url).href,
       title: 'Elegant Marquee Decoration',
       description: 'Beautiful marquee setup for weddings and special events',
       position: 'center'
     },
     {
-      url: '/src/assets/marqi2.jpg',
+      url: new URL('../assets/marqi2.jpg', import.meta.url).href,
       title: 'House Event Decoration',
       description: 'Professional house decoration for parties and celebrations',
       position: 'center'
@@ -157,7 +157,7 @@ const ServiceDetail = () => {
   const servicesData = {
     'wedding-light': {
       title: 'Wedding Light',
-      image: '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
+      image: new URL('../assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg', import.meta.url).href,
       description: 'Professional wedding and event lighting services',
       longDescription: 'Make your special day magical with our professional wedding lighting services. We specialize in creating stunning light displays that transform venues into enchanting spaces for weddings and special events.',
       features: [
@@ -188,7 +188,7 @@ const ServiceDetail = () => {
     },
     'house-marquee-decorating': {
       title: 'House & Marquee Decorating',
-      image: '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
+      image: new URL('../assets/beautiful-wedding-altar-made-white-pink-curtains.jpg', import.meta.url).href,
       description: 'Professional decoration services for houses and marquees',
       longDescription: 'Transform your events with our expert house and marquee decoration services. We create beautiful, memorable setups for weddings, parties, and all special occasions with attention to every detail.',
       features: [
@@ -219,7 +219,7 @@ const ServiceDetail = () => {
     },
     'heating-service': {
       title: 'Heating Service',
-      image: '/src/assets/technician-checking-heating-system-boiler-room.jpg',
+      image: new URL('../assets/technician-checking-heating-system-boiler-room.jpg', import.meta.url).href,
       description: 'Professional heating system installation and repair',
       longDescription: 'Keep your home warm and comfortable with our professional heating services. We provide expert installation, repair, and maintenance of all types of heating systems.',
       features: [
@@ -250,7 +250,7 @@ const ServiceDetail = () => {
     },
     'cleaning-services': {
       title: 'Cleaning Services',
-      image: '/src/assets/medium-shot-people-cleaning-building (1).jpg',
+      image: new URL('../assets/medium-shot-people-cleaning-building (1).jpg', import.meta.url).href,
       description: 'Professional cleaning services for homes and offices',
       longDescription: 'Our professional cleaning team provides comprehensive cleaning solutions for residential and commercial properties. We use eco-friendly products and modern equipment to ensure spotless results every time.',
       features: [
@@ -281,7 +281,7 @@ const ServiceDetail = () => {
     },
     'building-construction': {
       title: 'Building & Construction',
-      image: '/src/assets/working-with-blueprint.jpg',
+      image: new URL('../assets/working-with-blueprint.jpg', import.meta.url).href,
       description: 'Professional building and construction services for residential and commercial projects',
       longDescription: 'We provide comprehensive building and construction services with extensive experience. Our team of skilled professionals handles everything from small renovations to large-scale construction projects with precision and care.',
       features: [
@@ -312,7 +312,7 @@ const ServiceDetail = () => {
     },
     'repair-maintenance': {
       title: 'Repair & Maintenance',
-      image: '/src/assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg',
+      image: new URL('../assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg', import.meta.url).href,
       description: 'Reliable repair and maintenance services to keep your property in perfect condition',
       longDescription: 'Our maintenance team provides prompt and professional repair services for all types of properties. We understand the importance of keeping your home or business in excellent condition.',
       features: [
@@ -343,7 +343,7 @@ const ServiceDetail = () => {
     },
     'electrical-services': {
       title: 'Electrical Services',
-      image: '/src/assets/man-electrical-technician-working-switchboard-with-fuses.jpg',
+      image: new URL('../assets/man-electrical-technician-working-switchboard-with-fuses.jpg', import.meta.url).href,
       description: 'Professional electrical installation, repair, and maintenance services',
       longDescription: 'Our certified electricians provide safe and reliable electrical services for homes and businesses. We handle everything from simple repairs to complete electrical installations.',
       features: [
@@ -374,7 +374,7 @@ const ServiceDetail = () => {
     },
     'plumbing-services': {
       title: 'Plumbing Services',
-      image: '/src/assets/worker-repairing-water-heater.jpg',
+      image: new URL('../assets/worker-repairing-water-heater.jpg', import.meta.url).href,
       description: 'Expert plumbing solutions for all your residential and commercial needs',
       longDescription: 'Our experienced plumbers provide comprehensive plumbing services with a focus on quality and customer satisfaction. We handle all types of plumbing work efficiently.',
       features: [
@@ -405,7 +405,7 @@ const ServiceDetail = () => {
     },
     'house-moving': {
       title: 'House Moving Services',
-      image: '/src/assets/medium-shot-delivery-people-working.jpg',
+      image: new URL('../assets/medium-shot-delivery-people-working.jpg', import.meta.url).href,
       description: 'Safe and reliable house moving services for stress-free relocation',
       longDescription: 'We provide professional house moving services to make your relocation smooth and hassle-free. Our experienced team handles your belongings with care and ensures safe transport.',
       features: [
@@ -436,7 +436,7 @@ const ServiceDetail = () => {
     },
     'gardening-services': {
       title: 'Gardening Services',
-      image: '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
+      image: new URL('../assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg', import.meta.url).href,
       description: 'Professional garden maintenance and landscaping services',
       longDescription: 'Transform and maintain your outdoor spaces with our professional gardening services. We provide comprehensive garden care, landscaping, and maintenance to keep your garden beautiful throughout the year.',
       features: [

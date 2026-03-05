@@ -1,7 +1,11 @@
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { Award, Users, Target, Heart, Shield, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+// asset imports (so they bundle correctly)
+import heroImage from '../assets/pexels-tima-miroshnichenko-6196677.jpg';
 
 const AboutPage = memo(() => {
   return (
@@ -41,7 +45,7 @@ const AboutPage = memo(() => {
             </div>
             <div className="relative">
               <img 
-                src="/src/assets/pexels-tima-miroshnichenko-6196677.jpg" 
+                src={heroImage} 
                 alt="MAM Team"
                 className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               />
@@ -162,12 +166,12 @@ const AboutPage = memo(() => {
               Join hundreds of satisfied customers who trust MAM for their property needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/services"
+              <Link 
+                to="/services"
                 className="inline-flex items-center justify-center gap-3 bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-xl"
               >
                 View Our Services
-              </a>
+              </Link>
               <a 
                 href="/#contact"
                 className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md text-white border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all"

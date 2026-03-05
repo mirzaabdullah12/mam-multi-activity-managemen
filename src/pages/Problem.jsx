@@ -1,7 +1,9 @@
 import { Phone, Home, Award } from 'lucide-react';
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Problem = memo(() => {
+  const navigate = useNavigate();
   return (
     <section id="problem" className="py-20 px-4 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
       {/* Background Pattern */}
@@ -49,7 +51,7 @@ const Problem = memo(() => {
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
             <button className="px-10 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border-2 border-white/30 hover:border-white rounded-lg font-bold text-lg transition-all shadow-xl hover:scale-105"
-              onClick={() => window.location.href = '/get-quote'}
+              onClick={() => navigate('/get-quote')}
             >
               Get a Quote
             </button>

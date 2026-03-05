@@ -3,60 +3,63 @@
 const imageCache = new Set();
 
 export const preloadAllImages = () => {
-  const images = [
+  // list of filenames relative to assets directory
+  const assetNames = [
     // Home slider images - PRIORITY
-    '/src/assets/household-repair-middle-aged-man-inspecting-pipe-touching-hand-sink-stylish-modern-kitchen.jpg',
-    '/src/assets/male-electrician-working-electrical-panel-male-electrician-overalls.jpg',
-    '/src/assets/man-builder-uniform-holding-older-looking-building-plan.jpg',
-    
+    'household-repair-middle-aged-man-inspecting-pipe-touching-hand-sink-stylish-modern-kitchen.jpg',
+    'male-electrician-working-electrical-panel-male-electrician-overalls.jpg',
+    'man-builder-uniform-holding-older-looking-building-plan.jpg',
+
     // Service card images - ALL 9 CARDS
-    '/src/assets/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
-    '/src/assets/working-with-blueprint.jpg',
-    '/src/assets/builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg',
-    '/src/assets/man-electrical-technician-working-switchboard-with-fuses.jpg',
-    '/src/assets/worker-repairing-water-heater.jpg',
-    '/src/assets/medium-shot-delivery-people-working.jpg',
-    '/src/assets/beautiful-wedding-altar-made-white-pink-curtains.jpg',
-    '/src/assets/technician-checking-heating-system-boiler-room.jpg',
-    '/src/assets/caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
-    
+    'photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg',
+    'working-with-blueprint.jpg',
+    'builder-orange-work-clothes-using-hammer-with-stand-different-tools-near-workshop.jpg',
+    'man-electrical-technician-working-switchboard-with-fuses.jpg',
+    'worker-repairing-water-heater.jpg',
+    'medium-shot-delivery-people-working.jpg',
+    'beautiful-wedding-altar-made-white-pink-curtains.jpg',
+    'technician-checking-heating-system-boiler-room.jpg',
+    'caucasian-male-worker-gloves-removing-dry-leaves-from-sidewalk-with-hand-blower-park-side-view.jpg',
+
     // Electrical service detail images
-    '/src/assets/elec 1.jpg',
-    '/src/assets/elec 2.jpg',
-    
+    'elec 1.jpg',
+    'elec 2.jpg',
+
     // Gardening service detail images
-    '/src/assets/garden 1.jpg',
-    '/src/assets/garden 2.jpg',
-    '/src/assets/garden 3.jpg',
-    
+    'garden 1.jpg',
+    'garden 2.jpg',
+    'garden 3.jpg',
+
     // House moving service detail images
-    '/src/assets/house 1.jpg',
-    '/src/assets/house 2.jpg',
-    
+    'house 1.jpg',
+    'house 2.jpg',
+
     // Plumbing service detail images
-    '/src/assets/plumber 1.jpg',
-    '/src/assets/plumber 2.jpg',
-    
+    'plumber 1.jpg',
+    'plumber 2.jpg',
+
     // Wedding light service detail images
-    '/src/assets/weeding 2.jpg',
-    '/src/assets/wedding 1.jpg',
-    
+    'weeding 2.jpg',
+    'wedding 1.jpg',
+
     // House & marquee decorating service detail images
-    '/src/assets/maurqi1.jpg',
-    '/src/assets/marqi2.jpg',
-    
+    'maurqi1.jpg',
+    'marqi2.jpg',
+
     // Services page image
-    '/src/assets/portrait-smiling-construction-worker (1).jpg',
-    
+    'portrait-smiling-construction-worker (1).jpg',
+
     // About page image
-    '/src/assets/multi.jpg',
-    
+    'multi.jpg',
+
     // Cleaning service images
-    '/src/assets/medium-shot-people-cleaning-building (1).jpg',
-    
+    'medium-shot-people-cleaning-building (1).jpg',
+
     // About page image
-    '/src/assets/pexels-tima-miroshnichenko-6196677.jpg'
+    'pexels-tima-miroshnichenko-6196677.jpg'
   ];
+
+  const images = assetNames.map(name => new URL(`../assets/${name}`, import.meta.url).href);
 
   // Filter out already cached images
   const imagesToLoad = images.filter(src => !imageCache.has(src));
