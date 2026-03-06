@@ -60,7 +60,7 @@ const Navbar = memo(() => {
             
             {/* Call Button */}
             <a 
-              href="tel:123-456-789-0000"
+              href="tel:07833852812"
               className="flex items-center gap-2 bg-white text-indigo-600 px-6 py-2 rounded-lg hover:bg-gray-100 font-semibold transition-all hover:scale-105 shadow-lg"
             >
               <Phone size={18} />
@@ -116,7 +116,7 @@ const Navbar = memo(() => {
             
             {/* Call Button for Mobile */}
             <a
-              href="tel:123-456-789-0000"
+              href="tel:07833852812"
               className="flex items-center justify-center gap-2 w-full mt-2 bg-white text-indigo-600 px-6 py-3 rounded-lg hover:bg-gray-100 font-semibold transition-all"
               onClick={closeMenu}
             >

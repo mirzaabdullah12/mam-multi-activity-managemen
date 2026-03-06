@@ -22,13 +22,24 @@ const Problem = memo(() => {
             <Phone size={40} className="text-white" />
           </div>
 
-          {/* Phone Number */}
-          <a 
-            href="tel:123-456-789-0000" 
-            className="block text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 mb-8 hover:text-cyan-300 transition-colors"
-          >
-            123-456-789-0000
-          </a>
+          {/* Phone Numbers */}
+          <div className="space-y-4">
+            <a 
+              href="tel:07833852812" 
+              className="block text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              07833 852812
+            </a>
+            <p className="text-white text-lg">For English Speaking</p>
+            
+            <a 
+              href="tel:+447397076096" 
+              className="block text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 hover:text-cyan-300 transition-colors mt-6"
+            >
+              +44 7397 076096
+            </a>
+            <p className="text-white text-lg">For Urdu Speaking</p>
+          </div>
 
           {/* Main Heading */}
           <div className="mb-6">

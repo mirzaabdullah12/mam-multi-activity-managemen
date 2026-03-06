@@ -1058,14 +1058,14 @@ const ServiceDetail = () => {
           <p className="text-xl mb-8 opacity-90">Contact us today for a free consultation and quote</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="tel:123-456-789-0000"
+              href="tel:07833852812"
               className="inline-flex items-center gap-3 bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-xl"
             >
               <Phone size={24} />
               Call Us Now
             </a>
             <a 
-              href="mailto:your@email.com"
+              href="mailto:Contact@mamderby.co.uk"
               className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md text-white border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all"
             >
               <Mail size={24} />

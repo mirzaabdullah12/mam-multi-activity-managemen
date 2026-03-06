@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Send, CheckCircle, ChevronDown } from 'lucide-react';
+import { Send, CheckCircle, ChevronDown, AlertCircle } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { sendEmailToAdmin } from '../services/emailService';
 
 const GetQuote = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const GetQuote = () => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const services = [
     'Wedding Light',
@@ -32,28 +35,53 @@ const GetQuote = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Smooth scroll to top
-    window.scrollTo({ behavior: 'smooth', top: 0 });
+    // Set submitting state
+    setIsSubmitting(true);
+    setShowError(false);
     
-    // Show success message
-    setShowSuccess(true);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 5000);
+    try {
+      // Send email to admin
+      const result = await sendEmailToAdmin(formData, 'quote');
+      
+      if (result.success) {
+        // Smooth scroll to top
+        window.scrollTo({ behavior: 'smooth', top: 0 });
+        
+        // Show success message
+        setShowSuccess(true);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      } else {
+        // Show error message
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,6 +116,23 @@ const GetQuote = () => {
                   <h4 className="text-lg font-bold text-green-800 mb-2">Quote Request Submitted Successfully!</h4>
                   <p className="text-green-700 leading-relaxed">
                     Thank you for your interest in our services. We have received your quote request and our team will review it carefully. We'll get back to you within 24 hours with a detailed quote.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {showError && (
+            <div className="mb-8 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-500 rounded-xl p-6 animate-fade-in">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <AlertCircle size={24} className="text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-red-800 mb-2">Submission Failed</h4>
+                  <p className="text-red-700 leading-relaxed">
+                    We're sorry, but there was an error submitting your request. Please try again or contact us directly at 07833 852812 (English) or +44 7397 076096 (Urdu).
                   </p>
                 </div>
               </div>
@@ -181,11 +226,21 @@ const GetQuote = () => {
               {/* Submit Button */}
               <button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
               >
-                <Send size={20} />
-                Submit Quote Request
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    Submit Quote Request
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </>
+                )}
               </button>
             </form>
           </div>

@@ -34,8 +34,16 @@ const Footer = memo(() => {
               <div className="flex items-start gap-3">
                 <div className="text-cyan-400 mt-1">📞</div>
                 <div>
-                  <p className="font-semibold text-white">123-456-789-0000</p>
+                  <p className="font-semibold text-white">07833 852812 (English)</p>
+                  <p className="font-semibold text-white">+44 7397 076096 (Urdu)</p>
                   <p className="text-gray-300 text-sm">24/7 Emergency Services</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-cyan-400 mt-1">📧</div>
+                <div>
+                  <p className="font-semibold text-white">Contact@mamderby.co.uk</p>
+                  <p className="text-gray-300 text-sm">Quick Response Guaranteed</p>
                 </div>
               </div>
             </div>

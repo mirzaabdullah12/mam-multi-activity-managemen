@@ -1,5 +1,6 @@
-import { Mail, MapPin, Send, Phone, Clock, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import { memo, useState } from 'react';
+import { sendEmailToAdmin } from '../services/emailService';
 
 const Contact = memo(() => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Contact = memo(() => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -17,33 +20,55 @@ const Contact = memo(() => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Reset form first
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: ''
-    });
+    // Set submitting state
+    setIsSubmitting(true);
+    setShowError(false);
     
-    // Small delay then show success message and scroll
-    setTimeout(() => {
-      // Smooth scroll to top of contact section
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      // Send email to admin
+      const result = await sendEmailToAdmin(formData, 'contact');
+      
+      if (result.success) {
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+        
+        // Smooth scroll to top of contact section
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Show success message
+        setShowSuccess(true);
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      } else {
+        // Show error message
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 5000);
       }
-      
-      // Show success message
-      setShowSuccess(true);
-      
-      // Hide success message after 5 seconds
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setShowError(true);
       setTimeout(() => {
-        setShowSuccess(false);
+        setShowError(false);
       }, 5000);
-    }, 100);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -76,10 +101,10 @@ const Contact = memo(() => {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
                   <a 
-                    href="mailto:your@email.com" 
+                    href="mailto:Contact@mamderby.co.uk" 
                     className="text-lg text-blue-600 hover:text-blue-700 font-semibold transition-colors"
                   >
-                    your@email.com
+                    Contact@mamderby.co.uk
                   </a>
                   <p className="text-gray-600 mt-2 text-sm">
                     Send us an email anytime
@@ -96,12 +121,20 @@ const Contact = memo(() => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
-                  <a 
-                    href="tel:123-456-789-0000" 
-                    className="text-lg text-blue-600 hover:text-blue-700 font-semibold transition-colors"
-                  >
-                    123-456-789-0000
-                  </a>
+                  <div className="space-y-1">
+                    <a 
+                      href="tel:07833852812" 
+                      className="block text-lg text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                    >
+                      07833 852812 (English)
+                    </a>
+                    <a 
+                      href="tel:+447397076096" 
+                      className="block text-lg text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                    >
+                      +44 7397 076096 (Urdu)
+                    </a>
+                  </div>
                   <p className="text-gray-600 mt-2 text-sm">
                     Available 24/7 for emergencies
                   </p>
@@ -160,6 +193,23 @@ const Contact = memo(() => {
               </div>
             )}
 
+            {/* Error Message */}
+            {showError && (
+              <div className="mb-6 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-500 rounded-xl p-6 animate-fade-in">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <AlertCircle size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-red-800 mb-2">Submission Failed</h4>
+                    <p className="text-red-700 leading-relaxed">
+                      We're sorry, but there was an error sending your message. Please try again or contact us directly at 07833 852812 (English) or +44 7397 076096 (Urdu).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
@@ -211,11 +261,21 @@ const Contact = memo(() => {
               </div>
               <button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
               >
-                <Send size={20} />
-                Send Message
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    Send Message
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
