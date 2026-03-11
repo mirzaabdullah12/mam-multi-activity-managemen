@@ -54,9 +54,9 @@ const Navbar = memo(() => {
             <Link to="/services" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
               Services
             </Link>
-            <a href="/#contact" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
-              Contact
-            </a>
+            <Link to="/get-quote" className="text-white px-4 py-2 rounded-lg hover:bg-white/20 font-medium transition-all">
+              Get a Quote
+            </Link>
             
             {/* Call Button */}
             <a 
@@ -106,13 +106,13 @@ const Navbar = memo(() => {
             >
               Services
             </Link>
-            <a
-              href="/#contact"
+            <Link
+              to="/get-quote"
               className="block px-4 py-3 text-white hover:bg-white/20 rounded-lg font-medium transition-all"
               onClick={closeMenu}
             >
-              Contact
-            </a>
+              Get a Quote
+            </Link>
             
             {/* Call Button for Mobile */}
             <a
